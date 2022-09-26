@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito de la compra</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <script src="js/index.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>DOM - Fragment</h1>
+      </header>
+      <section class="articulos" id="articulos">
+        <div class="articulo">
+          <div class="logoArticulo">
+            <img src="https://picsum.photos/id/119/200/200" alt="" />
+          </div>
+          <div class="datosArticulo">
+            <p class="nombreArticulo" id="nombreArticulo">Portatil</p>
+            <p class="precioArticulo" id="precioArticulo">500 €</p>
+            <button class="botonArticulo" type="button">Comprar</button>
+          </div>
+        </div>
+        <div class="articulo">
+          <div class="logoArticulo">
+            <img src="https://picsum.photos/id/175/200/200" alt="" />
+          </div>
+          <div class="datosArticulo">
+            <p class="nombreArticulo" id="nombreArticulo">Reloj</p>
+            <p class="precioArticulo" id="precioArticulo">35 €</p>
+            <button class="botonArticulo" type="button">Comprar</button>
+          </div>
+        </div>
+        <div class="articulo">
+          <div class="logoArticulo">
+            <img src="https://picsum.photos/id/21/200/200" alt="" />
+          </div>
+          <div class="datosArticulo">
+            <p class="nombreArticulo" id="nombreArticulo">Tacones</p>
+            <p class="precioArticulo" id="precioArticulo">60 €</p>
+            <button class="botonArticulo" type="button">Comprar</button>
+          </div>
+        </div>
+        <div class="articulo">
+          <div class="logoArticulo">
+            <img src="https://picsum.photos/id/225/200/200" alt="" />
+          </div>
+          <div class="datosArticulo">
+            <p class="nombreArticulo" id="nombreArticulo">Te arabe</p>
+            <p class="precioArticulo" id="precioArticulo">120 €</p>
+            <button class="botonArticulo" type="button">Comprar</button>
+          </div>
+        </div>
+        <div class="articulo">
+          <div class="logoArticulo">
+            <img src="https://picsum.photos/id/63/200/200" alt="" />
+          </div>
+          <div class="datosArticulo">
+            <p class="nombreArticulo" id="nombreArticulo">Cafe</p>
+            <p class="precioArticulo" id="precioArticulo">3 €</p>
+            <button class="botonArticulo" type="button">Comprar</button>
+          </div>
+        </div>
+        <div class="articulo">
+          <div class="logoArticulo">
+            <img src="https://picsum.photos/id/23/200/200" alt="" />
+          </div>
+          <div class="datosArticulo">
+            <p class="nombreArticulo" id="nombreArticulo">Tenedores</p>
+            <p class="precioArticulo" id="precioArticulo">4 €</p>
+            <button class="botonArticulo" type="button">Comprar</button>
+          </div>
+        </div>
+      </section>
+      <section class="carrito">
+        <h2>Carrito</h2>
+        <table class="tabla" id="tabla">
+          <thead class="cabeceraTabla" id="cabeceraTabla">
+            <tr>
+              <td>#</td>
+              <td>Item</td>
+              <td>Cantidad</td>
+              <td>Total</td>
+            </tr>
+          </thead>
+          <tbody class="cuerpoTabla" id="cuerpoTabla"></tbody>
+          <tfoot class="pieTabla" id="pieTabla">
+            <tr>
+              <td colspan="4">Precio Total: <span id="precioFinal"></span></td>
+            </tr>
+            <tr>
+              <td colspan="4">
+                <button
+                  type="button"
+                  class="btnLimpiarCarrito"
+                  id="btnLimpiarCarrito"
+                >
+                  VACIAR CARRITO
+                </button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+    </div>
+  </body>
+</html>
