@@ -7,6 +7,7 @@ let precioFinal = document.getElementById("precioFinal");
 btnLimpiarCarrito.addEventListener("click", limpiarCarrito);
 
 function asignarIdBotonesArticulos() {
+  console.log(botonesArticulos);
   botonesArticulos.forEach((element, index) => {
     element.id = index + 1;
     element.addEventListener("click", agregarItemCarrito);
@@ -25,36 +26,35 @@ function comprobarContenidoTabla() {
 function agregarItemCarrito(e) {
   let keysLocalStorage = Object.keys(db);
   let item;
-  if (keysLocalStorage.length !== 0) {
-    if (comprobarContenidoTabla()) {
-      let estado = true;
-      for (let index = 0; index < db.length; index++) {
-        if (
-          parseInt(e.target.id) ===
-          JSON.parse(db.getItem(keysLocalStorage[index])).id
-        ) {
-          item = JSON.parse(db.getItem(keysLocalStorage[index]));
-          item.cantidad = item.cantidad + 1;
-          db.setItem(item.id, JSON.stringify(item));
-          document.getElementById("cantidad" + item.id).textContent =
-            item.cantidad;
-          document.getElementById("total" + item.id).textContent =
-            item.cantidad * item.precio;
-          calcularPrecioFinal();
-          estado = false;
-          break;
-        }
+  if (comprobarContenidoTabla()) {
+    let estado = true;
+    for (let index = 0; index < db.length; index++) {
+      if (
+        parseInt(e.target.id) ===
+        JSON.parse(db.getItem(keysLocalStorage[index])).id
+      ) {
+        item = JSON.parse(db.getItem(keysLocalStorage[index]));
+        item.cantidad = item.cantidad + 1;
+        db.setItem(item.id, JSON.stringify(item));
+        document.getElementById("cantidad" + item.id).textContent =
+          item.cantidad;
+        document.getElementById("total" + item.id).textContent =
+          item.cantidad * item.precio;
+        calcularPrecioFinal();
+        estado = false;
+        break;
       }
-      if (estado) {
-        crearItem(e);
-      }
-    } else {
+    }
+    if (estado) {
       crearItem(e);
     }
+  } else {
+    crearItem(e);
   }
 }
 
 function crearItem(e) {
+  console.log("sadsada");
   let hijosContenedorBoton = e.target.parentNode.childNodes;
   let nombreArticulo = hijosContenedorBoton[1].textContent;
   let precioArticulo = parseInt(
@@ -93,38 +93,31 @@ function pintarItem(objeto) {
 function comprobarItemsLocalStorage() {
   let keysLocalStorage = Object.keys(db);
   let item;
-  if (keysLocalStorage.length !== 0) {
-    botonesArticulos.forEach((element, indice) => {
-      for (let index = 0; index < db.length; index++) {
-        if (indice + 1 === JSON.parse(db.getItem(keysLocalStorage[index])).id) {
-          item = JSON.parse(db.getItem(keysLocalStorage[index]));
-          pintarItem(item);
-          break;
-        }
+  botonesArticulos.forEach((element, indice) => {
+    for (let index = 0; index < db.length; index++) {
+      if (indice + 1 === JSON.parse(db.getItem(keysLocalStorage[index])).id) {
+        item = JSON.parse(db.getItem(keysLocalStorage[index]));
+        pintarItem(item);
+        break;
       }
-    });
-  }
+    }
+  });
 }
 
 function limpiarCarrito() {
   if (comprobarContenidoTabla()) {
     let keysLocalStorage = Object.keys(db);
-    if (keysLocalStorage.length !== 0) {
-      botonesArticulos.forEach((element, indice) => {
-        for (let index = 0; index < db.length; index++) {
-          if (
-            indice + 1 ===
+    botonesArticulos.forEach((element, indice) => {
+      for (let index = 0; index < db.length; index++) {
+        if (indice + 1 === JSON.parse(db.getItem(keysLocalStorage[index])).id) {
+          keysItemCarrito.push(
             JSON.parse(db.getItem(keysLocalStorage[index])).id
-          ) {
-            keysItemCarrito.push(
-              JSON.parse(db.getItem(keysLocalStorage[index])).id
-            );
-            break;
-          }
+          );
+          break;
         }
-      });
-      borrarItemsCarrito(keysItemCarrito);
-    }
+      }
+    });
+    borrarItemsCarrito(keysItemCarrito);
   }
 }
 
