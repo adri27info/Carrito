@@ -7,7 +7,6 @@ let precioFinal = document.getElementById("precioFinal");
 btnLimpiarCarrito.addEventListener("click", limpiarCarrito);
 
 function asignarIdBotonesArticulos() {
-  console.log(botonesArticulos);
   botonesArticulos.forEach((element, index) => {
     element.id = index + 1;
     element.addEventListener("click", agregarItemCarrito);
@@ -54,7 +53,6 @@ function agregarItemCarrito(e) {
 }
 
 function crearItem(e) {
-  console.log("sadsada");
   let hijosContenedorBoton = e.target.parentNode.childNodes;
   let nombreArticulo = hijosContenedorBoton[1].textContent;
   let precioArticulo = parseInt(
