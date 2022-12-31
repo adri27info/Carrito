@@ -30,8 +30,8 @@ To run this project, we need the following steps:
 
 - Disable the option to delete cookies and data from the site when the browser is closed, so that the information is displayed in the application correctly. This option will be found in your browser settings.
 
+- Download and install vscode at the following link: https://code.visualstudio.com/download
+
 - Download the Live Server extension, which is found in the vscode editor
 
 - Once the extension is downloaded, run the extension and everything will work correctly
-
-- If you get an error, try running the application normally using the index.html file
